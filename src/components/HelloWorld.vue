@@ -2,14 +2,23 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <p>fireBase: {{name}}</p>
+    <p>name: {{name}}</p>
+    <button @click="createNewPost">createNewPost</button>
+    <ul>
+      <li v-for="p in posts"
+        :key="p.time">
+        <router-link :to="{ name: 'post', params: { time: p.time }}">{{p.time}} </router-link>
+      </li>
+    </ul>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
 
-const { mapState, mapActions } = createNamespacedHelpers('user');
+const user = createNamespacedHelpers('user');
+const article = createNamespacedHelpers('article');
 
 export default {
   name: 'HelloWorld',
@@ -17,10 +26,12 @@ export default {
     msg: 'Welcome to Your Vue.js App',
   }),
   computed: {
-    ...mapState(['name']),
+    ...user.mapState(['name']),
+    ...article.mapState(['posts']),
   },
   methods: {
-    ...mapActions(['updateName']),
+    ...user.mapActions(['updateName']),
+    ...article.mapActions(['createNewPost']),
   },
   mounted() {
     this.updateName();
