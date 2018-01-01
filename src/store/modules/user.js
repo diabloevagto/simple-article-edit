@@ -1,19 +1,24 @@
-export const state = {
-};
-
 export const getters = {
 };
 
-export const actions = {
+export const mutations = {
+  SET_NAME(state, payload) {
+    state.name = payload;
+  },
 };
 
-export const mutations = {
+export const actions = {
+  updateName({ commit }) {
+    commit('SET_NAME', 'payloadTest');
+  },
 };
 
 export default {
   namespaced: true,
-  state,
+  state: {
+    name: 'unknown',
+  },
   getters,
-  actions,
   mutations,
+  actions,
 };
