@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
+import login from '@/components/login';
+import article from '@/components/article';
 import post from '@/components/post';
 
 Vue.use(Router);
@@ -9,13 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'login',
+      component: login,
     },
     {
-      path: '/post/:time',
-      name: 'post',
-      component: post,
+      path: '/article',
+      name: 'article',
+      component: article,
+      children: [{
+        path: '/post/:time',
+        name: 'post',
+        component: post,
+      }],
     },
+
   ],
 });

@@ -8,8 +8,8 @@ export const mutations = {
 };
 
 export const actions = {
-  updateName({ commit }) {
-    commit('SET_NAME', 'payloadTest');
+  updateName({ commit }, payload) {
+    commit('SET_NAME', payload);
   },
 };
 

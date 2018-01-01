@@ -12,7 +12,7 @@ import { createNamespacedHelpers } from 'vuex';
 const { mapGetters } = createNamespacedHelpers('article');
 
 export default {
-  name: 'HelloWorld',
+  name: 'post',
   data: () => ({
     msg: 'Welcome to Your Vue.js App',
   }),

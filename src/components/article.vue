@@ -1,11 +1,10 @@
 <template>
-  <div class="hello">
+  <div class>
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
     <p>name: {{name}}</p>
     <button @click="createNewPost">createNewPost</button>
     <ul>
-      <li v-for="p in posts"
+      <li v-for="p in allPosts"
         :key="p.time">
         <router-link :to="{ name: 'post', params: { time: p.time }}">{{p.time}} </router-link>
       </li>
@@ -21,20 +20,27 @@ const user = createNamespacedHelpers('user');
 const article = createNamespacedHelpers('article');
 
 export default {
-  name: 'HelloWorld',
+  name: 'article',
   data: () => ({
-    msg: 'Welcome to Your Vue.js App',
+    msg: 'Welcome to edit',
   }),
   computed: {
     ...user.mapState(['name']),
     ...article.mapState(['posts']),
+    allPosts() {
+      return Object
+        .values(this.posts)
+        .sort((a, b) => a.time < b.time);
+    },
   },
   methods: {
     ...user.mapActions(['updateName']),
     ...article.mapActions(['createNewPost']),
   },
-  mounted() {
-    this.updateName();
+  watch: {
+    name() {
+      this.updateName(this.name);
+    },
   },
 };
 </script>
