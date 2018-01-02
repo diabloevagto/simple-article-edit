@@ -25,7 +25,7 @@ export default {
     loginCheck() {
       if (this.name !== '') {
         this.updateName(this.name);
-        this.$router.push({ name: 'article' });
+        this.$router.push({ name: 'articles' });
       }
     },
   },

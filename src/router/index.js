@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import login from '@/components/login';
-import article from '@/components/article';
+import articles from '@/components/articles';
 import post from '@/components/post';
 import store from '@/store';
 
@@ -15,9 +15,9 @@ const router = new Router({
       component: login,
     },
     {
-      path: '/article',
-      name: 'article',
-      component: article,
+      path: '/articles',
+      name: 'articles',
+      component: articles,
       children: [{
         path: '/post/:time',
         name: 'post',

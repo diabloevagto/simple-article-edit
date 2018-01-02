@@ -20,7 +20,7 @@ const user = createNamespacedHelpers('user');
 const article = createNamespacedHelpers('article');
 
 export default {
-  name: 'article',
+  name: 'articles',
   data: () => ({
     msg: 'Welcome to edit',
   }),
