@@ -8,6 +8,7 @@ const getAllPost = async function (name) {
   if (val === null) {
     const timeKey = (new Date()).getTime();
     const newPost = {
+      reserve: true,
       [timeKey]: {
         time: timeKey,
         title: 'hello',
