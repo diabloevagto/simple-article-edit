@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     ...user.mapActions(['updateName']),
-    ...article.mapActions(['createNewPost', 'deletePost']),
+    ...article.mapActions(['createNewPost', 'fetchPosts', 'deletePost']),
     formatTime(time) {
       return timeFormat(time);
     },
@@ -71,6 +71,9 @@ export default {
     name() {
       this.updateName(this.name);
     },
+  },
+  mounted() {
+    this.fetchPosts();
   },
 };
 </script>

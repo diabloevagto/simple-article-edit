@@ -1,21 +1,19 @@
 import Vue from 'vue';
+import store from '@/store';
+import article from '../../service/firebase/article';
+
 
 export const getters = {
   getPost: state => time => state.posts[time],
 };
 
 export const mutations = {
-  createNewPost({ posts }) {
-    const timeKey = (new Date()).getTime();
-    Vue.set(posts, timeKey, {
-      time: (new Date()).getTime(),
-      title: '1',
-      content: '2',
-    });
+  createNewPost({ posts }, payload) {
+    Vue.set(posts, payload.time, payload);
   },
-  // insertPost({ posts }, payload) {
-  //   Vue.set(posts, payload.time, payload);
-  // },
+  insertPost(state, payload) {
+    state.posts = Object.assign({}, payload);
+  },
   updatePost({ posts }, payload) {
     Vue.set(posts, payload.time, payload);
   },
@@ -25,16 +23,25 @@ export const mutations = {
 };
 
 export const actions = {
-  createNewPost({ commit }) {
-    commit('createNewPost');
+  async createNewPost({ commit }) {
+    const timeKey = (new Date()).getTime();
+    const newPost = {
+      time: timeKey,
+      title: 'new',
+      content: 'new content',
+    };
+
+    await article.createPost(store.state.user.name, newPost);
+    commit('createNewPost', newPost);
   },
-  // fetchPosts({ commit }) {
-  //   commit('insertPost');
-  // },
-  updatePost({ commit }, payload) {
+  async fetchPosts({ commit }) {
+    const posts = await article.getAllPost(store.state.user.name);
+    commit('insertPost', posts);
+  },
+  async updatePost({ commit }, payload) {
     commit('updatePost', payload);
   },
-  deletePost({ commit }, payload) {
+  async deletePost({ commit }, payload) {
     commit('deletePost', payload);
   },
 };
