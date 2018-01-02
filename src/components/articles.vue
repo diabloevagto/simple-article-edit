@@ -9,7 +9,6 @@
         <router-link :to="{ name: 'post', params: { time: p.time }}">{{p.time}} </router-link>
       </li>
     </ul>
-    <router-view/>
   </div>
 </template>
 

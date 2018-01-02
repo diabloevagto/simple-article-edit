@@ -18,11 +18,11 @@ const router = new Router({
       path: '/articles',
       name: 'articles',
       component: articles,
-      children: [{
-        path: '/post/:time',
-        name: 'post',
-        component: post,
-      }],
+    },
+    {
+      path: '/post/:time',
+      name: 'post',
+      component: post,
     },
   ],
 });
