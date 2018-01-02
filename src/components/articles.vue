@@ -6,7 +6,7 @@
     <ul>
       <li v-for="p in allPosts"
         :key="p.time">
-        <router-link :to="{ name: 'post', params: { time: p.time }}">{{p.time}} </router-link>
+        <router-link :to="{ name: 'post', params: { time: p.time }}">{{formatTime(p.time)}} </router-link>
         <el-button type="text"
           @click="handleDeleteBtn(p.time)">X</el-button>
       </li>
@@ -29,6 +29,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
+import timeFormat from '../utility/index';
 
 const user = createNamespacedHelpers('user');
 const article = createNamespacedHelpers('article');
@@ -52,6 +53,9 @@ export default {
   methods: {
     ...user.mapActions(['updateName']),
     ...article.mapActions(['createNewPost', 'deletePost']),
+    formatTime(time) {
+      return timeFormat(time);
+    },
     handleDeleteBtn(target) {
       this.pickPost = target;
       this.dialogVisible = true;

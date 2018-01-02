@@ -2,7 +2,7 @@
   <div>
     <h1>預覽</h1>
     <h1>title: {{ getPost($route.params.time).title }}</h1>
-    <h2>time: {{ getPost($route.params.time).time }}</h2>
+    <h2>time: {{ formatTime(getPost($route.params.time).time) }}</h2>
     <p>content: {{ getPost($route.params.time).content }}</p>
     <hr>
     <h1>修改區</h1>
@@ -21,6 +21,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
+import timeFormat from '../utility/index';
 
 const user = createNamespacedHelpers('user');
 const article = createNamespacedHelpers('article');
@@ -37,6 +38,9 @@ export default {
   },
   methods: {
     ...article.mapActions(['updatePost']),
+    formatTime(time) {
+      return timeFormat(time);
+    },
     updateCurrentPost() {
       this.updatePost({
         time: this.$route.params.time,
