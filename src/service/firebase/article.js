@@ -22,8 +22,15 @@ const getAllPost = async function (name) {
 };
 
 const createPost = async function (name, post) {
-  console.log(post);
-  db.ref(`${name}/posts/${post.time}`).set(post);
+  await db.ref(`${name}/posts/${post.time}`).set(post);
 };
 
-export default { getAllPost, createPost };
+const deletePost = async function (name, timeKey) {
+  await db.ref(`${name}/posts/${timeKey}`).remove();
+};
+
+const updatePost = async function (name, timeKey, post) {
+  await db.ref(`${name}/posts/${post.time}`).set(post);
+};
+
+export default { getAllPost, createPost, deletePost, updatePost };

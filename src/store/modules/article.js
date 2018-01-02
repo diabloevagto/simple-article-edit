@@ -39,9 +39,11 @@ export const actions = {
     commit('insertPost', posts);
   },
   async updatePost({ commit }, payload) {
+    await article.updatePost(store.state.user.name, payload.time, payload);
     commit('updatePost', payload);
   },
   async deletePost({ commit }, payload) {
+    await article.deletePost(store.state.user.name, payload.time);
     commit('deletePost', payload);
   },
 };
