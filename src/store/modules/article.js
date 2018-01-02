@@ -13,20 +13,23 @@ export const mutations = {
       content: '2',
     });
   },
-  insertPost({ posts }, payload) {
+  // insertPost({ posts }, payload) {
+  //   Vue.set(posts, payload.time, payload);
+  // },
+  updatePost({ posts }, payload) {
     Vue.set(posts, payload.time, payload);
   },
-  // updatePost({ posts }, payload) {
-  //    const idx = posts.findIndex(p => p.time === payload.time);
-  // },
 };
 
 export const actions = {
   createNewPost({ commit }) {
     commit('createNewPost');
   },
-  fetchPosts({ commit }) {
-    commit('insertPost');
+  // fetchPosts({ commit }) {
+  //   commit('insertPost');
+  // },
+  updatePost({ commit }, payload) {
+    commit('updatePost', payload);
   },
 };
 

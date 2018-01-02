@@ -1,23 +1,53 @@
 <template>
   <div>
-    <h1>{{ getPost($route.params.time).title }}</h1>
-    <h2>{{ getPost($route.params.time).time }}</h2>
-    <p>{{ getPost($route.params.time).content }}</p>
+    <h1>預覽</h1>
+    <h1>title: {{ getPost($route.params.time).title }}</h1>
+    <h2>time: {{ getPost($route.params.time).time }}</h2>
+    <p>content: {{ getPost($route.params.time).content }}</p>
+    <hr>
+    <h1>修改區</h1>
+    <p>title: {{title}}</p>
+    <p>content: {{content}}</p>
+    <br>
+    <input type="text"
+      v-model="title">
+    <br>
+    <textarea v-model="content"
+      cols="30"
+      rows="10"></textarea>
+    <button @click="updateCurrentPost">update post</button>
   </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
 
-const { mapGetters } = createNamespacedHelpers('article');
+const user = createNamespacedHelpers('user');
+const article = createNamespacedHelpers('article');
 
 export default {
   name: 'post',
   data: () => ({
-    msg: 'Welcome to Your Vue.js App',
+    title: '',
+    content: '',
   }),
   computed: {
-    ...mapGetters(['getPost']),
+    ...user.mapState(['name']),
+    ...article.mapGetters(['getPost']),
+  },
+  methods: {
+    ...article.mapActions(['updatePost']),
+    updateCurrentPost() {
+      this.updatePost({
+        time: this.$route.params.time,
+        title: this.title,
+        content: this.content,
+      });
+    },
+  },
+  mounted() {
+    this.title = this.getPost(this.$route.params.time).title;
+    this.content = this.getPost(this.$route.params.time).content;
   },
 };
 </script>
@@ -26,5 +56,8 @@ export default {
 <style scoped>
   h1 {
     color: red;
+  }
+  textarea {
+    margin: 10px;
   }
 </style>
