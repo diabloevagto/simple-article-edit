@@ -19,6 +19,9 @@ export const mutations = {
   updatePost({ posts }, payload) {
     Vue.set(posts, payload.time, payload);
   },
+  deletePost({ posts }, payload) {
+    Vue.delete(posts, payload.time);
+  },
 };
 
 export const actions = {
@@ -30,6 +33,9 @@ export const actions = {
   // },
   updatePost({ commit }, payload) {
     commit('updatePost', payload);
+  },
+  deletePost({ commit }, payload) {
+    commit('deletePost', payload);
   },
 };
 

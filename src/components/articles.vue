@@ -7,9 +7,24 @@
       <li v-for="p in allPosts"
         :key="p.time">
         <router-link :to="{ name: 'post', params: { time: p.time }}">{{p.time}} </router-link>
+        <el-button type="text"
+          @click="handleDeleteBtn(p.time)">X</el-button>
       </li>
     </ul>
+    <el-dialog title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :show-close=false>
+      <span>这是一段信息</span>
+      <span slot="footer"
+        class="dialog-footer">
+        <el-button @click="handleClick(false)">取 消</el-button>
+        <el-button type="primary"
+          @click="handleClick(true)">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
+
 </template>
 
 <script>
@@ -22,6 +37,8 @@ export default {
   name: 'articles',
   data: () => ({
     msg: 'Welcome to edit',
+    dialogVisible: false,
+    pickPost: null,
   }),
   computed: {
     ...user.mapState(['name']),
@@ -34,7 +51,17 @@ export default {
   },
   methods: {
     ...user.mapActions(['updateName']),
-    ...article.mapActions(['createNewPost']),
+    ...article.mapActions(['createNewPost', 'deletePost']),
+    handleDeleteBtn(target) {
+      this.pickPost = target;
+      this.dialogVisible = true;
+    },
+    handleClick(bool) {
+      if (bool) {
+        this.deletePost({ time: this.pickPost });
+      }
+      this.dialogVisible = false;
+    },
   },
   watch: {
     name() {
