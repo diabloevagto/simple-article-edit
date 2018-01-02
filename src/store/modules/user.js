@@ -16,7 +16,7 @@ export const actions = {
 export default {
   namespaced: true,
   state: {
-    name: 'unknown',
+    name: '',
   },
   getters,
   mutations,

@@ -29,6 +29,9 @@ export default {
       }
     },
   },
+  mounted() {
+    this.updateName(this.name);
+  },
 };
 </script>
 
