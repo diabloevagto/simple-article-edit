@@ -8,6 +8,7 @@ import store from '@/store';
 Vue.use(Router);
 
 const router = new Router({
+  base: '/simple-article-edit/',
   routes: [
     {
       path: '/',
