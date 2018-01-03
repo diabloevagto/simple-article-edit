@@ -1,0 +1,17 @@
+language: node_js
+node_js: stable
+install:
+  - npm install
+script:
+  - npm run build
+after_success:
+  - cd ./dist
+  - git init
+  - git config user.name "travis ci"
+  - git config user.email "Your Email"
+  - git add .
+  - git commit -m "Update by travis ci"
+  - git push --force --quiet "https://${GH_TOKEN}@diabloevagto/simple-article-edit.git master:gh-pages
+branches:
+  only:
+    - master
