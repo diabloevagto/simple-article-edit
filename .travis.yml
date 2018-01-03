@@ -11,7 +11,7 @@ after_success:
   - git config user.email "Your Email"
   - git add .
   - git commit -m "Update by travis ci"
-  - git push --force --quiet "https://${GH_TOKEN}@diabloevagto/simple-article-edit.git" master:gh-pages
+  - git push --force --quiet "https://${GH_TOKEN}@github.com:diabloevagto/simple-article-edit.git" master:gh-pages
 branches:
   only:
     - master
