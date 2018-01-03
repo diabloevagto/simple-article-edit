@@ -28,7 +28,7 @@ export const actions = {
     const newPost = {
       time: timeKey,
       title: 'new',
-      content: 'new content',
+      content: '# h1\n## h2\n\n* one\n* two\n\n1. one\n2. two\n\n~~delete~~\n\n*italic*',
     };
 
     await article.createPost(store.state.user.name, newPost);
