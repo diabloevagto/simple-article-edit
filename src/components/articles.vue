@@ -2,7 +2,8 @@
   <div class>
     <h1>{{ msg }}</h1>
     <p>name: {{name}}</p>
-    <button @click="createNewPost">createNewPost</button>
+    <el-button type="primary"
+      @click="createNewPost">新增文章</el-button>
     <ul>
       <li v-for="p in allPosts"
         :key="p.time">
