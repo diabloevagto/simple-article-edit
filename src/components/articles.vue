@@ -15,7 +15,7 @@
               @click="handleDeleteBtn(p.time)">X</el-button>
           </div>
           <div>
-            {{p.content }}
+            {{p.title }}
           </div>
         </el-card>
       </li>

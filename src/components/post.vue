@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <h1>預覽</h1>
     <h1>title: {{ getPost($route.params.time).title }}</h1>
     <h2>time: {{ formatTime(getPost($route.params.time).time) }}</h2>
@@ -9,6 +9,8 @@
     <p>title: {{title}}</p>
     <p>content: {{content}}</p>
     <br>
+    <vue-markdown :source="content"></vue-markdown>
+    <br>
     <input type="text"
       v-model="title">
     <br>
@@ -16,10 +18,43 @@
       cols="30"
       rows="10"></textarea>
     <button @click="updateCurrentPost">update post</button>
+  </div> -->
+  <div>
+    <el-header>
+      <el-row>
+        <el-col :span="4">
+          <span>
+            <el-input type="text"
+              v-model="title" />
+          </span>
+        </el-col>
+        <el-col :span="12">
+          <span>{{ title }}</span>
+          <span> - </span>
+          <span>{{ formatTime(getPost($route.params.time).time) }}</span>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary"
+            @click="updateCurrentPost">update post</el-button>
+        </el-col>
+      </el-row>
+    </el-header>
+
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <textarea class="source"
+          rows="50"
+          v-model="content"></textarea>
+      </el-col>
+      <el-col :span="12">
+        <vue-markdown :source="content"></vue-markdown>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown';
 import { createNamespacedHelpers } from 'vuex';
 import timeFormat from '../utility/index';
 
@@ -32,6 +67,9 @@ export default {
     title: '',
     content: '',
   }),
+  components: {
+    VueMarkdown,
+  },
   computed: {
     ...user.mapState(['name']),
     ...article.mapGetters(['getPost']),
@@ -57,11 +95,25 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1 {
-    color: red;
+<style scoped lang="scss">
+  el-col {
+    border: 2px;
   }
-  textarea {
-    margin: 10px;
+  .full-height {
+    height: 100%;
+  }
+  .source {
+    width: 100%;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    padding: 2px;
+  }
+  .el-header {
+    background-color: #b3c0d1;
+    color: #333;
+    line-height: 60px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.5em;
   }
 </style>
