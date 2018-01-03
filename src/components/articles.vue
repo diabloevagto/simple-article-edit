@@ -6,9 +6,17 @@
     <ul>
       <li v-for="p in allPosts"
         :key="p.time">
-        <router-link :to="{ name: 'post', params: { time: p.time }}">{{formatTime(p.time)}} </router-link>
-        <el-button type="text"
-          @click="handleDeleteBtn(p.time)">X</el-button>
+        <el-card class="box-card">
+          <div slot="header"
+            class="clearfix">
+            <router-link :to="{ name: 'post', params: { time: p.time }}">{{formatTime(p.time)}} </router-link>
+            <el-button type="text"
+              @click="handleDeleteBtn(p.time)">X</el-button>
+          </div>
+          <div>
+            {{p.content }}
+          </div>
+        </el-card>
       </li>
     </ul>
     <el-dialog title="注意"
