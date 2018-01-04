@@ -1,24 +1,4 @@
 <template>
-  <!-- <div>
-    <h1>預覽</h1>
-    <h1>title: {{ getPost($route.params.time).title }}</h1>
-    <h2>time: {{ formatTime(getPost($route.params.time).time) }}</h2>
-    <p>content: {{ getPost($route.params.time).content }}</p>
-    <hr>
-    <h1>修改區</h1>
-    <p>title: {{title}}</p>
-    <p>content: {{content}}</p>
-    <br>
-    <vue-markdown :source="content"></vue-markdown>
-    <br>
-    <input type="text"
-      v-model="title">
-    <br>
-    <textarea v-model="content"
-      cols="30"
-      rows="10"></textarea>
-    <button @click="updateCurrentPost">update post</button>
-  </div> -->
   <div>
     <el-header>
       <el-row>
@@ -35,7 +15,7 @@
         </el-col>
         <el-col :span="4">
           <el-button type="primary"
-            @click="updateCurrentPost">update post</el-button>
+            @click="updateCurrentPost">更新文章</el-button>
         </el-col>
       </el-row>
     </el-header>

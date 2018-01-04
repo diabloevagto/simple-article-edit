@@ -1,9 +1,19 @@
 <template>
-  <div class>
-    <h1>{{ msg }}</h1>
-    <p>name: {{name}}</p>
-    <el-button type="primary"
-      @click="createNewPost">新增文章</el-button>
+  <div>
+    <el-header>
+      <el-row>
+        <el-col :span="8">
+          <span>{{ msg }}</span>
+        </el-col>
+        <el-col :span="8">
+          <span>{{name}}</span>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary"
+            @click="createNewPost">新增文章</el-button>
+        </el-col>
+      </el-row>
+    </el-header>
     <ul>
       <li v-for="p in allPosts"
         :key="p.time">
@@ -46,7 +56,7 @@ const article = createNamespacedHelpers('article');
 export default {
   name: 'articles',
   data: () => ({
-    msg: 'Welcome to edit',
+    msg: '編輯頁',
     dialogVisible: false,
     pickPost: null,
   }),
@@ -90,19 +100,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1,
-  h2 {
-    font-weight: normal;
-  }
   ul {
     list-style-type: none;
     padding: 0;
   }
   li {
     display: inline-block;
-    margin: 0 10px;
+    margin: 10px;
   }
   a {
     color: #42b983;
+  }
+  .el-header {
+    background-color: #b3c0d1;
+    color: #333;
+    line-height: 60px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.5em;
   }
 </style>
