@@ -37,7 +37,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.updateName(this.name);
+          this.updateName(this.form.name);
           this.$router.push({ name: 'articles' });
         }
         return valid;
@@ -45,7 +45,7 @@ export default {
     },
   },
   mounted() {
-    this.updateName(this.name);
+    this.updateName(this.form.name);
   },
 };
 </script>
