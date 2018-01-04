@@ -22,6 +22,7 @@
             class="clearfix">
             <router-link :to="{ name: 'post', params: { time: p.time }}">{{formatTime(p.time)}} </router-link>
             <el-button type="text"
+              style="float: right; padding: 2px 0"
               @click="handleDeleteBtn(p.time)">X</el-button>
           </div>
           <div>
