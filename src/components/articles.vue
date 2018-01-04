@@ -119,4 +119,7 @@ export default {
     text-align: center;
     font-size: 1.5em;
   }
+  .box-card {
+    width: 180px;
+  }
 </style>
