@@ -22,6 +22,7 @@
 import { createNamespacedHelpers } from 'vuex';
 
 const user = createNamespacedHelpers('user');
+const article = createNamespacedHelpers('article');
 
 export default {
   name: 'login',
@@ -34,6 +35,7 @@ export default {
   }),
   methods: {
     ...user.mapActions(['updateName']),
+    ...article.mapActions(['clearAllPost']),
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -46,6 +48,7 @@ export default {
   },
   mounted() {
     this.updateName(this.form.name);
+    this.clearAllPost();
   },
 };
 </script>

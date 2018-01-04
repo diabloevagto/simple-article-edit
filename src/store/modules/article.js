@@ -46,6 +46,9 @@ export const actions = {
     await article.deletePost(store.state.user.name, payload.time);
     commit('deletePost', payload);
   },
+  clearAllPost({ commit }) {
+    commit('insertPost', {});
+  },
 };
 
 export default {
