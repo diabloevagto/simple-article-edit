@@ -3,13 +3,16 @@
     <h1>{{ msg }}</h1>
     <el-form ref="form"
       label-position="top"
+      :model="form"
       @submit.native.prevent>
-      <el-form-item label="使用者名稱">
-        <el-input v-model="name"></el-input>
+      <el-form-item label="使用者名稱"
+        prop="name"
+        :rules="form.namerRules">
+        <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary"
-          @click="loginCheck">Login</el-button>
+          @click="submitForm('form')">Login</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -24,15 +27,21 @@ export default {
   name: 'login',
   data: () => ({
     msg: 'Login',
-    name: '',
+    form: {
+      name: '',
+      namerRules: [{ required: true, message: '使用者名稱不能為空' }],
+    },
   }),
   methods: {
     ...user.mapActions(['updateName']),
-    loginCheck() {
-      if (this.name !== '') {
-        this.updateName(this.name);
-        this.$router.push({ name: 'articles' });
-      }
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.updateName(this.name);
+          this.$router.push({ name: 'articles' });
+        }
+        return valid;
+      });
     },
   },
   mounted() {
