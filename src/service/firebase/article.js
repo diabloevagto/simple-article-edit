@@ -1,6 +1,6 @@
 import db from './initializeFirebase';
 
-const getAllPost = async function (name) {
+const getAllPost = async (name) => {
   const snapshot = await db.ref(`${name}/posts`).once('value');
   let val = await snapshot.val();
 
@@ -22,15 +22,15 @@ const getAllPost = async function (name) {
   return val;
 };
 
-const createPost = async function (name, post) {
+const createPost = async (name, post) => {
   await db.ref(`${name}/posts/${post.time}`).set(post);
 };
 
-const deletePost = async function (name, timeKey) {
+const deletePost = async (name, timeKey) => {
   await db.ref(`${name}/posts/${timeKey}`).remove();
 };
 
-const updatePost = async function (name, timeKey, post) {
+const updatePost = async (name, timeKey, post) => {
   await db.ref(`${name}/posts/${post.time}`).set(post);
 };
 
