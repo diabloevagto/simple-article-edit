@@ -1,4 +1,5 @@
 # simple-article-edit
+[![Build Status](https://travis-ci.org/diabloevagto/simple-article-edit.svg?branch=master)](https://travis-ci.org/diabloevagto/simple-article-edit)
 
 實做 CRUD 線上文章編輯功能，並且利用 firebase 實現 CRUD 功能
 
