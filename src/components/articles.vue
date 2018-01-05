@@ -68,7 +68,7 @@ export default {
       return Object
         .values(this.posts)
         .filter(it => typeof it === 'object')
-        .sort((a, b) => a.time < b.time);
+        .sort((a, b) => b.time - a.time);
     },
   },
   methods: {
