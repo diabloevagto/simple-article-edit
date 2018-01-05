@@ -8,6 +8,13 @@ export const mutations = {
 };
 
 export const actions = {
+
+  /**
+   * 設定使用者名稱
+   *
+   * @param {any} { commit }
+   * @param {string} 使用者的名稱
+   */
   updateName({ commit }, payload) {
     commit('setName', payload);
   },
