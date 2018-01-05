@@ -11,7 +11,7 @@ export const mutations = {
   createNewPost({ posts }, payload) {
     Vue.set(posts, payload.time, payload);
   },
-  insertPost(state, payload) {
+  replaceAllPosts(state, payload) {
     state.posts = Object.assign({}, payload);
   },
   updatePost({ posts }, payload) {
@@ -36,7 +36,7 @@ export const actions = {
   },
   async fetchPosts({ commit }) {
     const posts = await article.getAllPost(store.state.user.name);
-    commit('insertPost', posts);
+    commit('replaceAllPosts', posts);
   },
   async updatePost({ commit }, payload) {
     await article.updatePost(store.state.user.name, payload.time, payload);
@@ -47,7 +47,7 @@ export const actions = {
     commit('deletePost', payload);
   },
   clearAllPost({ commit }) {
-    commit('insertPost', {});
+    commit('replaceAllPosts', {});
   },
 };
 
