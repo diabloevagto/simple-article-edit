@@ -83,7 +83,7 @@ export default {
     },
     handleClick(bool) {
       if (bool) {
-        this.deletePost({ time: this.pickPost });
+        this.deletePost(this.pickPost);
       }
       this.dialogVisible = false;
     },

@@ -18,7 +18,7 @@ export const mutations = {
     Vue.set(posts, payload.time, payload);
   },
   deletePost({ posts }, payload) {
-    Vue.delete(posts, payload.time);
+    Vue.delete(posts, payload);
   },
 };
 
@@ -43,7 +43,7 @@ export const actions = {
     commit('updatePost', payload);
   },
   async deletePost({ commit }, payload) {
-    await article.deletePost(store.state.user.name, payload.time);
+    await article.deletePost(store.state.user.name, payload);
     commit('deletePost', payload);
   },
   clearAllPost({ commit }) {
