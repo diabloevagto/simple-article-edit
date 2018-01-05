@@ -40,7 +40,7 @@
         class="dialog-footer">
         <el-button @click="handleClick(false)">取 消</el-button>
         <el-button type="primary"
-          @click="handleClick(true)">确 定</el-button>
+          @click="handleClick(true)">確 定</el-button>
       </span>
     </el-dialog>
   </div>

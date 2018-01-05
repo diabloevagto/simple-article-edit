@@ -11,7 +11,7 @@
         <el-col :span="12">
           <span>{{ title }}</span>
           <span> - </span>
-          <span>{{ formatTime(getPost($route.params.time).time) }}</span>
+          <span>{{ formatTime }}</span>
         </el-col>
         <el-col :span="4">
           <el-button type="primary"
@@ -53,12 +53,13 @@ export default {
   computed: {
     ...user.mapState(['name']),
     ...article.mapGetters(['getPost']),
+    formatTime() {
+      const time = this.getPost(this.$route.params.time).time;
+      return timeFormat(time);
+    },
   },
   methods: {
     ...article.mapActions(['updatePost']),
-    formatTime(time) {
-      return timeFormat(time);
-    },
     updateCurrentPost() {
       this.updatePost({
         time: this.$route.params.time,
