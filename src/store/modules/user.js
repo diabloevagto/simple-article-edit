@@ -2,14 +2,14 @@ export const getters = {
 };
 
 export const mutations = {
-  SET_NAME(state, payload) {
+  setName(state, payload) {
     state.name = payload;
   },
 };
 
 export const actions = {
   updateName({ commit }, payload) {
-    commit('SET_NAME', payload);
+    commit('setName', payload);
   },
 };
 
