@@ -19,6 +19,11 @@
 * axios
 * firebase
 
+# 注意事項
+* 要到 config 將 productionSourceMap 關閉，[commit](https://github.com/diabloevagto/simple-article-edit/commit/26ef86f557bd5e0fcc721ef55db5087d9399ec34)
+* 檔案放到 github page 上要修改 router base 並且只能使用 hash mode，[commit](https://github.com/diabloevagto/simple-article-edit/commit/75e3235a5ba8323936afa82a35d871e28efa625f#diff-36727cbb21483337586ca81cb95f29b4)
+* 檔案放到 github page 上要修改 asset public path，[commit](https://github.com/diabloevagto/simple-article-edit/commit/da474d96fcfe6d8dfe3b4a88ce59055606aec2af)
+
 # todo
 * [X] 新增文章
 * [X] 讀取文章
